@@ -1,0 +1,6 @@
+div {
+  display: flex;
+  height: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+}

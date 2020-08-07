@@ -1,0 +1,24 @@
+<div [matMenuTriggerFor]="menu">
+  <mat-icon
+    matBadge="{{ this.users.size }}"
+    matBadgeColor="accent">
+    supervised_user_circle
+  </mat-icon>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button matTooltip="{{ this.localUser.name }} (You)" (click)="openDialog()" mat-menu-item>
+    <mat-icon>perm_identity</mat-icon>
+    <span>{{ this.localUser.name }} (You)</span>
+  </button>
+  <ng-container *ngFor="let user of this.users | keyvalue; index as i">
+    <button *ngIf="i < this.maxUsers - 1 && user.key !== this.localUser.uuid" matTooltip="{{ user.value }}" mat-menu-item>
+      <mat-icon>supervisor_account</mat-icon>
+      <span>{{ user.value }}</span>
+    </button>
+  </ng-container>
+  <button *ngIf="this.users.size >= (this.maxUsers - 1)" mat-menu-item disabled>
+    <mat-icon>supervisor_account</mat-icon>
+    <span>{{ this.users.size - this.maxUsers }} other user(s)</span>
+  </button>
+</mat-menu>

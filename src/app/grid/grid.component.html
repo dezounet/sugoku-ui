@@ -1,0 +1,38 @@
+<div *ngIf="this.loading" style="margin:0 auto; height: 100vw; max-height: 33em;">
+  <mat-spinner style="margin:0 auto;"></mat-spinner>
+</div>
+<div *ngIf="!this.locked && !this.loading" class="howto">
+  <span>Click on a cell to set or increment its value, right click to erase it.</span>
+</div>
+<div *ngIf="!this.loading" class="grid-container">
+  <table class="grid" [ngClass]="{'solved': isSolved()}" appNoRightClick>
+    <ng-container *ngFor="let row of grid; let i = index">
+      <tr [ngClass]="{'invalid': !this.isRowValid(i)}">
+        <ng-container *ngFor="let cell of row; let j = index">
+          <td (click)="!this.isFrozen(i, j) && this.onClick(i, j, cell)"
+              (contextmenu)="!this.isFrozen(i, j) && resetCell(i, j, cell)"
+              [ngClass]="{'left': j % 3 === 0, 'right': j % 3 === 2, 'top': i % 3 === 0, 'bottom': i % 3 === 2, 'invalid': !this.isColumnValid(j) || !this.isBoxValid(i, j), 'frozen': this.isFrozen(i, j)}">
+            {{ cell.value }}
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </table>
+</div>
+<div *ngIf="!this.loading" class="uuid">
+  <span>Grid UUID: {{ this.uuid }}</span>
+</div>
+<div *ngIf="this.locked && !this.loading" class="button-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Congratulations !</mat-card-title>
+      <mat-card-subtitle>Choose next grid difficulty</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <button mat-flat-button color="primary" class="button" (click)="onDifficultyButtonClick('easy')">Easy</button>
+      <button mat-flat-button color="primary" class="button" (click)="onDifficultyButtonClick('medium')">Medium</button>
+      <button mat-flat-button color="primary" class="button" (click)="onDifficultyButtonClick('hard')">Hard</button>
+      <button mat-flat-button color="primary" class="button" (click)="onDifficultyButtonClick('expert')">Nightmare</button>
+    </mat-card-content>
+  </mat-card>
+</div>

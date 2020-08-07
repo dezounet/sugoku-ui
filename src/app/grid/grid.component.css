@@ -1,0 +1,87 @@
+.grid-container {
+  margin: 1px;
+  width: 95vw;
+  height: 100vw;
+  max-height: 33em;
+  max-width: 33em;
+  min-height: 300px;
+  min-width: 300px;
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.solved {
+  background-color: #edf6f9;
+}
+
+.solved td {
+  cursor: default;
+}
+
+.invalid {
+  background-color:    #ffe6e6;
+}
+
+.frozen {
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+td {
+  width: 11.11%;
+  height: 11.11%;
+  border: 1px solid #3f51b5;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.top {
+  border-top: 2px solid #3f51b5;
+}
+
+.bottom {
+  border-bottom: 2px solid #3f51b5;
+}
+
+.left {
+  border-left: 2px solid #3f51b5;
+}
+
+.right {
+  border-right: 2px solid #3f51b5;
+}
+
+.button-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.button {
+  margin: 5px;
+}
+
+.uuid {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-style: italic;
+  color: #999999;
+  margin: 10px;
+}
+
+.howto {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #999999;
+  margin: 10px;
+}

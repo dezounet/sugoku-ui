@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Edit your username</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="data.username" required>
+    </mat-form-field>
+  </p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button color="primary" type="button" (click)="onNoClick()">Abort</button>
+  <button mat-flat-button color="primary" type="submit" [disabled]="data.username == ''" [mat-dialog-close]="data.username" ng-submit cdkFocusInitial>Save</button>
+</div>
