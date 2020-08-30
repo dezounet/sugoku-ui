@@ -14,6 +14,7 @@ export class GridComponent implements OnInit {
   loading = true;
   uuid: string;
   grid: Cell[][] = [];
+  counter = 0;
 
   constructor(private gridService: GridService) {
     // initialize grid
@@ -54,9 +55,19 @@ export class GridComponent implements OnInit {
   private getGridFromServer(): void {
     this.loading = true;
 
+    // Update data
     this.gridService.getGrid().subscribe(data => {
       this.updateGrid(data);
       this.loading = false;
+    });
+
+    // Update counter
+    this.getGridCounter();
+  }
+
+  private getGridCounter(): void {
+    this.gridService.getGridCounter().subscribe(data => {
+      this.counter = data;
     });
   }
 

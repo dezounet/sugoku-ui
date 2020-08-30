@@ -22,6 +22,14 @@
 <div *ngIf="!this.loading" class="uuid">
   <span>Grid UUID: {{ this.uuid }}</span>
 </div>
+<mat-card *ngIf="!this.loading" class="card">
+  <mat-card-header>
+    <mat-card-title>Completed grid</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{ this.counter }}
+  </mat-card-content>
+</mat-card>
 <div *ngIf="this.locked && !this.loading" class="button-container">
   <mat-card>
     <mat-card-header>

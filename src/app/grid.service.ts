@@ -51,6 +51,11 @@ export class GridService {
     return grid;
   }
 
+  public getGridCounter(): Observable<number> {
+    const count = this.http.get(PROTOCOL + '://' + BACKEND_ADDRESS + GridService.REST_ENDPOINT + '/count') as Observable<number>;
+    return count;
+  }
+
   public updateCell(cell: Cell): void {
     const message = {
       event: GridService.UPDATE_EVENT,
