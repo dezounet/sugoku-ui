@@ -56,12 +56,13 @@ export class WebsocketService {
     const receiver = new Subject<Message>();
 
     socket.onmessage = (msgEvent: MessageEvent) => {
-      console.log('Receiving message in websocket service');
       const data = JSON.parse(msgEvent.data);
-      receiver.next({
-        event: data.event,
-        data: data.data,
-      });
+      if (data.uuid !== this.uuid) {
+        receiver.next({
+          event: data.event,
+          data: data.data,
+        });
+      }
     };
 
     const observer = {

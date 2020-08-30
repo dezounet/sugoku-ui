@@ -84,6 +84,9 @@ export class GridComponent implements OnInit {
     }
 
     this.locked = false;
+    if (this.isSolved()) {
+      this.locked = true;
+    }
   }
 
   onClick(row: number, column: number, cell: Cell): void {
